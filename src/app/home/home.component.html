@@ -1,26 +1,43 @@
 <div class="container">
-
-  <h1>Welcome to Kpeiz Films</h1>
-  <p>Here's some random Films (Please refresh the page to get more random ones):</p>
-  <ul>
-    <li *ngFor="let movie of defaultMovies?.Search">
-      <a [routerLink]="['/film', movie.imdbID]">{{ movie.Title }} ({{movie.Year}})</a>
-    </li>
-  </ul>
-
-  <p>Looking for another Film? Make your search here!</p>
-  <form [formGroup]="searchForm" (ngSubmit)="searchBtn(searchForm, getIndex())">
-      <input type="text" formControlName="search" placeholder="Search..." required=""
-      autofocus="">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
 <br>
-    <p *ngIf="searchResult?.Search?.length > 0"> Are you looking for one of these Films? Click on search button again to see more results </p>
-    <p *ngIf="searchResult?.Response == 'False'"> We can't find what you're looking for in our database? Try again </p>
+  <div class="row text-center text-lg-left">
 
-  <ul>
-    <li *ngFor="let movie of searchResult?.Search">
-      <a [routerLink]="['/film', movie.imdbID]">{{ movie.Title }} ({{movie.Year}})</a>
-    </li>
-  </ul>
+    <div *ngFor="let movie of defaultMovies?.Search; let i=index" class="col-lg-3 col-md-4 col-6">
+      <a *ngIf="i<4" [routerLink]="['/film', movie.imdbID]" class="d-block mb-4 h-100">
+        <div class="hovereffect">
+            <img class="img-fluid img-thumbnail img-responsive" src="{{ movie.Poster }}" alt="">
+            <div class="overlay">
+                <h2>{{ movie.Title }}</h2>
+				<p>{{movie.Year}}</p>
+            </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <h1 class="font-weight-light mt-4 text-white">Looking for a particular Film? Make your search here!</h1>
+  <form [formGroup]="searchForm" (ngSubmit)="searchBtn(searchForm, getIndex())">
+    <input class="form-control input-lg" type="text" formControlName="search" placeholder="Search..." required="" autofocus="">
+  </form>
+  <br>
+  <h1 class="font-weight-light mt-4 text-success" *ngIf="searchResult?.Search?.length > 0"> Press Enter Button to
+    see more results </h1>
+  <h1 class="font-weight-light mt-4 text-danger" *ngIf="searchResult?.Response == 'False'"> We can't find what you're looking for in our database? Try again </h1>
+
+
+
+  <div class="row text-center text-lg-left">
+
+      <div *ngFor="let movie of searchResult?.Search;" class="col-lg-3 col-md-4 col-6">
+        <a [routerLink]="['/film', movie.imdbID]" class="d-block mb-4 h-100">
+          <div class="hovereffect">
+              <img class="img-fluid img-thumbnail img-responsive" src="{{ movie.Poster }}" alt="">
+              <div class="overlay">
+                  <h2>{{ movie.Title }}</h2>
+          <p>{{movie.Year}}</p>
+              </div>
+          </div>
+        </a>
+      </div>
+    </div>
 </div>

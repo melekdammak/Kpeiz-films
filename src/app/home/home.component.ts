@@ -8,6 +8,7 @@ import { MovieService } from './../_services/movie.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  keyword: any ;
   defaultMovies: any ;
   searchResult: any ;
   searchIndex: any;
@@ -34,6 +35,11 @@ export class HomeComponent implements OnInit {
     return this.searchIndex; }
 
   searchBtn(keyword, index) {
+    if (this.keyword !== keyword.value.search) {
+      this.keyword = keyword.value.search;
+      this.searchIndex = 1;
+      index = 1;
+    }
     this.service.searchMovie(keyword, index).subscribe(movies => {
       this.searchResult = movies;
       if (this.searchResult.Response === 'True') {

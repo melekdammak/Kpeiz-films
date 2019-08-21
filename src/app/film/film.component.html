@@ -1,107 +1,96 @@
 <div class="container">
+  <br>
+  <div class="row">
 
+    <div class="col-md-8">
+      <img class="img-fluid" src="{{movie.Poster}}" alt="">
+    </div>
+
+    <div class="col-md-4">
+      <h4 class="my-3 text-white">Title</h4>
+      <p class="text-white">{{ movie?.Title }}</p>
+      <h4 class="my-3 text-white">Plot</h4>
+      <p class="text-white">{{ movie?.Plot }}</p>
+      <h4 class="my-3 text-white">Writer</h4>
+      <p class="text-white">{{ movie?.Writer }}</p>
+      <h4 class="my-3 text-white">Actors</h4>
+      <p class="text-white">{{ movie?.Actors }}</p>
+      <h4 class="my-3 text-white">Genre</h4>
+      <p class="text-white">{{ movie?.Genre }}</p>
+      <h4 class="my-3 text-white">Director</h4>
+      <p class="text-white">{{ movie?.Director }}</p>
+    </div>
+
+  </div>
+
+  <h4 class="my-3 text-white">Film Details</h4>
   <table style="width:100%">
-
     <tr>
-      <th>Title:</th>
-      <td>{{ movie?.Title }}</td>
+      <th class="text-white">Year:</th>
+      <td class="text-white">{{ movie?.Year }}</td>
     </tr>
     <tr>
-      <th>Year:</th>
-      <td>{{ movie?.Year }}</td>
+      <th class="text-white">Rated:</th>
+      <td class="text-white">{{ movie?.Rated }}</td>
     </tr>
     <tr>
-      <th>Rated:</th>
-      <td>{{ movie?.Rated }}</td>
+      <th class="text-white">Released:</th>
+      <td class="text-white">{{ movie?.Released }}</td>
     </tr>
     <tr>
-      <th>Released:</th>
-      <td>{{ movie?.Released }}</td>
+      <th class="text-white">Runtime:</th>
+      <td class="text-white">{{ movie?.Runtime }}</td>
     </tr>
     <tr>
-      <th>Runtime:</th>
-      <td>{{ movie?.Runtime }}</td>
+      <th class="text-white">Language:</th>
+      <td class="text-white">{{ movie?.Language }}</td>
     </tr>
     <tr>
-      <th>Genre:</th>
-      <td>{{ movie?.Genre }}</td>
+      <th class="text-white">Country:</th>
+      <td class="text-white">{{ movie?.Country }}</td>
     </tr>
     <tr>
-      <th>Director:</th>
-      <td>{{ movie?.Director }}</td>
+      <th class="text-white">Awards:</th>
+      <td class="text-white">{{ movie?.Awards }}</td>
+    </tr>
+    <tr *ngFor="let rate of movie.Ratings">
+      <th class="text-white">{{rate?.Source}}</th>
+      <td class="text-white">{{rate?.Value}}</td>
     </tr>
     <tr>
-      <th>Writer:</th>
-      <td>{{ movie?.Writer }}</td>
+      <th class="text-white">Metascore:</th>
+      <td class="text-white">{{ movie?.Metascore }}</td>
     </tr>
     <tr>
-      <th>Actors:</th>
-      <td>{{ movie?.Actors }}</td>
-    </tr>
-    <br>
-    <tr>
-      <th>Plot:</th>
-      <td>{{ movie?.Plot }}</td>
-    </tr>
-    <br>
-    <tr>
-      <th>Language:</th>
-      <td>{{ movie?.Language }}</td>
+      <th class="text-white">imdbRating:</th>
+      <td class="text-white">{{ movie?.imdbRating }}</td>
     </tr>
     <tr>
-      <th>Country:</th>
-      <td>{{ movie?.Country }}</td>
+      <th class="text-white">imdbVotes:</th>
+      <td class="text-white">{{ movie?.imdbVotes }}</td>
     </tr>
     <tr>
-      <th>Awards:</th>
-      <td>{{ movie?.Awards }}</td>
+      <th class="text-white">imdbID:</th>
+      <td class="text-white">{{ movie?.imdbID }}</td>
     </tr>
     <tr>
-      <th>Poster:</th>
-      <td><img src="{{movie.Poster}}" class="w-10"></td>
-    </tr>
-    <br>
-    <tr>
-      <th>Ratings:</th>
-      <td>
-        <p *ngFor="let rate of movie.Ratings">Source: {{rate?.Source}} => Value: {{rate?.Value}}</p>
-      </td>
-    </tr>
-    <br>
-    <tr>
-      <th>Metascore:</th>
-      <td>{{ movie?.Metascore }}</td>
+      <th class="text-white">Type:</th>
+      <td class="text-white">{{ movie?.Type }}</td>
     </tr>
     <tr>
-      <th>imdbRating:</th>
-      <td>{{ movie?.imdbRating }}</td>
+      <th class="text-white">DVD:</th>
+      <td class="text-white">{{ movie?.DVD }}</td>
     </tr>
     <tr>
-      <th>imdbVotes:</th>
-      <td>{{ movie?.imdbVotes }}</td>
+      <th class="text-white">BoxOffice:</th>
+      <td class="text-white">{{ movie?.BoxOffice }}</td>
     </tr>
     <tr>
-      <th>imdbID:</th>
-      <td>{{ movie?.imdbID }}</td>
+      <th class="text-white">Production:</th>
+      <td class="text-white">{{ movie?.Production }}</td>
     </tr>
     <tr>
-      <th>Type:</th>
-      <td>{{ movie?.Type }}</td>
-    </tr>
-    <tr>
-      <th>DVD:</th>
-      <td>{{ movie?.DVD }}</td>
-    </tr>
-    <tr>
-      <th>BoxOffice:</th>
-      <td>{{ movie?.BoxOffice }}</td>
-    </tr>
-    <tr>
-      <th>Production:</th>
-      <td>{{ movie?.Production }}</td>
-    </tr>
-    <tr>
-      <th>Website:</th>
+      <th class="text-white">Website:</th>
       <a href="{{ movie?.Website }}">{{ movie?.Website }}</a>
     </tr>
   </table>
