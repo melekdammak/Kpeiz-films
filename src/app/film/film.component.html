@@ -1,0 +1,108 @@
+<div class="container">
+
+  <table style="width:100%">
+
+    <tr>
+      <th>Title:</th>
+      <td>{{ movie?.Title }}</td>
+    </tr>
+    <tr>
+      <th>Year:</th>
+      <td>{{ movie?.Year }}</td>
+    </tr>
+    <tr>
+      <th>Rated:</th>
+      <td>{{ movie?.Rated }}</td>
+    </tr>
+    <tr>
+      <th>Released:</th>
+      <td>{{ movie?.Released }}</td>
+    </tr>
+    <tr>
+      <th>Runtime:</th>
+      <td>{{ movie?.Runtime }}</td>
+    </tr>
+    <tr>
+      <th>Genre:</th>
+      <td>{{ movie?.Genre }}</td>
+    </tr>
+    <tr>
+      <th>Director:</th>
+      <td>{{ movie?.Director }}</td>
+    </tr>
+    <tr>
+      <th>Writer:</th>
+      <td>{{ movie?.Writer }}</td>
+    </tr>
+    <tr>
+      <th>Actors:</th>
+      <td>{{ movie?.Actors }}</td>
+    </tr>
+    <br>
+    <tr>
+      <th>Plot:</th>
+      <td>{{ movie?.Plot }}</td>
+    </tr>
+    <br>
+    <tr>
+      <th>Language:</th>
+      <td>{{ movie?.Language }}</td>
+    </tr>
+    <tr>
+      <th>Country:</th>
+      <td>{{ movie?.Country }}</td>
+    </tr>
+    <tr>
+      <th>Awards:</th>
+      <td>{{ movie?.Awards }}</td>
+    </tr>
+    <tr>
+      <th>Poster:</th>
+      <td><img src="{{movie.Poster}}" class="w-10"></td>
+    </tr>
+    <br>
+    <tr>
+      <th>Ratings:</th>
+      <td>
+        <p *ngFor="let rate of movie.Ratings">Source: {{rate?.Source}} => Value: {{rate?.Value}}</p>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <th>Metascore:</th>
+      <td>{{ movie?.Metascore }}</td>
+    </tr>
+    <tr>
+      <th>imdbRating:</th>
+      <td>{{ movie?.imdbRating }}</td>
+    </tr>
+    <tr>
+      <th>imdbVotes:</th>
+      <td>{{ movie?.imdbVotes }}</td>
+    </tr>
+    <tr>
+      <th>imdbID:</th>
+      <td>{{ movie?.imdbID }}</td>
+    </tr>
+    <tr>
+      <th>Type:</th>
+      <td>{{ movie?.Type }}</td>
+    </tr>
+    <tr>
+      <th>DVD:</th>
+      <td>{{ movie?.DVD }}</td>
+    </tr>
+    <tr>
+      <th>BoxOffice:</th>
+      <td>{{ movie?.BoxOffice }}</td>
+    </tr>
+    <tr>
+      <th>Production:</th>
+      <td>{{ movie?.Production }}</td>
+    </tr>
+    <tr>
+      <th>Website:</th>
+      <a href="{{ movie?.Website }}">{{ movie?.Website }}</a>
+    </tr>
+  </table>
+</div>

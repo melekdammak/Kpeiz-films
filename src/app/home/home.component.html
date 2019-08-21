@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1>Welcome to Kpeiz Films</h1>
+  <p>Here's some random Films (Please refresh the page to get more random ones):</p>
+  <ul>
+    <li *ngFor="let movie of defaultMovies?.Search">
+      <a [routerLink]="['/film', movie.imdbID]">{{ movie.Title }} ({{movie.Year}})</a>
+    </li>
+  </ul>
+
+  <p>Looking for another Film? Make your search here!</p>
+  <form [formGroup]="searchForm" (ngSubmit)="searchBtn(searchForm, getIndex())">
+      <input type="text" formControlName="search" placeholder="Name" required=""
+      autofocus="">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+<br>
+    <p *ngIf="searchResult?.Search?.length > 0"> Are you looking for one of these Films? Click on search again to see more results </p>
+    <p *ngIf="searchResult?.Response == 'False'"> We can't find what you're looking for in our database? Try again </p>
+
+  <ul>
+    <li *ngFor="let movie of searchResult?.Search">
+      <a [routerLink]="['/film', movie.imdbID]">{{ movie.Title }} ({{movie.Year}})</a>
+    </li>
+  </ul>
+</div>
