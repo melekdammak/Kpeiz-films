@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   searchResult: any ;
   searchIndex: any;
   searchForm: FormGroup;
+  paginationForm: FormGroup;
 
   constructor(private service: MovieService) {
     this.searchForm = new FormGroup({
@@ -46,6 +47,20 @@ export class HomeComponent implements OnInit {
         this.searchIndex++;
       } else {
         this.searchIndex = 1;
+      }
+    });
+  }
+
+  paginationBtn(keyword, index) {
+    if (this.keyword !== keyword) {
+      this.keyword = keyword;
+      this.searchIndex = 1;
+      index = 1;
+    }
+    this.service.searchMovie2(keyword, index).subscribe(movies => {
+      this.searchResult = movies;
+      if (this.searchResult.Response === 'True') {
+        this.searchIndex = index + 1;
       }
     });
   }

@@ -1,15 +1,16 @@
 <div class="container">
-<br>
+  <br>
   <div class="row text-center text-lg-left">
 
+    <!-- Random Films -->
     <div *ngFor="let movie of defaultMovies?.Search; let i=index" class="col-lg-3 col-md-4 col-6">
       <a *ngIf="i<4" [routerLink]="['/film', movie.imdbID]" class="d-block mb-4 h-100">
         <div class="hovereffect">
-            <img class="img-fluid img-thumbnail img-responsive" src="{{ movie.Poster }}" alt="">
-            <div class="overlay">
-                <h2>{{ movie.Title }}</h2>
-				<p>{{movie.Year}}</p>
-            </div>
+          <img class="img-fluid img-thumbnail img-responsive" src="{{ movie.Poster }}" alt="">
+          <div class="overlay">
+            <h2>{{ movie.Title }}</h2>
+            <p>{{movie.Year}}</p>
+          </div>
         </div>
       </a>
     </div>
@@ -17,27 +18,37 @@
 
   <h1 class="font-weight-light mt-4 text-white">Looking for a particular Film? Make your search here!</h1>
   <form [formGroup]="searchForm" (ngSubmit)="searchBtn(searchForm, getIndex())">
-    <input class="form-control input-lg" type="text" formControlName="search" placeholder="Search..." required="" autofocus="">
+    <input class="form-control input-lg" type="text" formControlName="search" placeholder="Search..." required=""
+      autofocus="">
   </form>
   <br>
-  <h1 class="font-weight-light mt-4 text-success" *ngIf="searchResult?.Search?.length > 0"> Press Enter Button to
-    see more results </h1>
-  <h1 class="font-weight-light mt-4 text-danger" *ngIf="searchResult?.Response == 'False'"> We can't find what you're looking for in our database? Try again </h1>
+  <h1 class="font-weight-light mt-4 text-danger" *ngIf="searchResult?.Response == 'False'"> We can't find what you're
+    looking for in our database? Try again </h1>
 
+    <!-- Pagination -->
+  <ul style="text-align:center;" *ngIf="searchResult?.Response == 'True'" class="pagination">
+    <li *ngFor="let movie of searchResult?.Search; let i=index" class="page-item">
+      <div *ngIf="(searchResult?.totalResults / 10)*10 + searchResult?.totalResults % 10 > (i+1)*10">
+        <input class="form-control page-link" type="submit" (click)="paginationBtn(keyword, i+1)" value="{{i+1}}"
+          required="" autofocus="">
+      </div>
+    </li>
+    <br>
+  </ul>
 
-
+  <!-- Search Result -->
   <div class="row text-center text-lg-left">
 
-      <div *ngFor="let movie of searchResult?.Search;" class="col-lg-3 col-md-4 col-6">
-        <a [routerLink]="['/film', movie.imdbID]" class="d-block mb-4 h-100">
-          <div class="hovereffect">
-              <img class="img-fluid img-thumbnail img-responsive" src="{{ movie.Poster }}" alt="">
-              <div class="overlay">
-                  <h2>{{ movie.Title }}</h2>
-          <p>{{movie.Year}}</p>
-              </div>
+    <div *ngFor="let movie of searchResult?.Search;" class="col-lg-3 col-md-4 col-6">
+      <a [routerLink]="['/film', movie.imdbID]" class="d-block mb-4 h-100">
+        <div class="hovereffect">
+          <img class="img-fluid img-thumbnail img-responsive" src="{{ movie.Poster }}" alt="">
+          <div class="overlay">
+            <h2>{{ movie.Title }}</h2>
+            <p>{{movie.Year}}</p>
           </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
+  </div>
 </div>

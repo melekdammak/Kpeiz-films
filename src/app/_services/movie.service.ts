@@ -19,4 +19,10 @@ export class MovieService {
   searchMovie(keyword, index) {
     return this.http.get(`http://www.omdbapi.com/?s=${keyword.value.search}&type=movie&page=${index}&apiKey=295e6386`);
   }
+
+  // searchMovie2: same as searchMovie but the keyword is a string
+
+  searchMovie2(keyword, index) {
+    return this.http.get(`http://www.omdbapi.com/?s=${keyword}&type=movie&page=${index}&apiKey=295e6386`);
+  }
 }
